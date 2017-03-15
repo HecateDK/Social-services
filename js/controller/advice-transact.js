@@ -35,6 +35,124 @@
 		}
 		return res;
 	};
+
+	var selectTime = function(result){         // 补缴情况
+		// console.log("配置picker的数据",optionsJson);
+		var picker = new $.DtPicker(optionsJson);
+		picker.show(function(rs){
+			result.innerText = rs.text;
+			picker.dispose();
+			var selectStartTime = new Date(startTime.innerText).getTime();
+			var selectEndTime = new Date(endTime.innerText).getTime();
+			// console.log("按月算 所选择时间的时间戳，用于比较大小",selectStartTime,selectEndTime);
+			if( selectStartTime > selectEndTime ){
+				tips.style.visibility = "visible";
+				_data.ssUnit = 0;
+				detailData.count =  _data.ssUnit;
+				_data.timeStart = null;
+				_data.timeEnd = null;
+				// console.log("购买数量",detailData.count);
+			}else{
+				tips.style.visibility = "hidden";
+				var diffenYear = endTime.innerText.substring(0,4) - startTime.innerText.substring(0,4),
+					diffenMonth = endTime.innerText.substring(5) - startTime.innerText.substring(5);
+				if( diffenYear === 0 ){
+					var resultMonth = diffenMonth + 1;
+				}else{
+					var resultMonth = diffenYear * 12 + diffenMonth + 1;
+				}
+				// console.log(diffenYear,diffenMonth,resultMonth);
+				_data.ssUnit = resultMonth;
+				detailData.count =  _data.ssUnit;
+				_data.timeStart = startTime.innerText;
+				_data.timeEnd = endTime.innerText;
+				// console.log("购买数量",detailData.count);
+			}
+			
+			var ptAmount = pAmount * _data.ssUnit;
+			var ptServiceFee = pServiceFee * _data.ssUnit;
+			doc.getElementById("totalPrice").innerText = ptAmount + ptServiceFee;
+			_data.pAmount = _data.ssUnit + ' × ' + pAmount+'元';
+			_data.pServiceFee =  _data.ssUnit + ' × ' + pServiceFee+'元';
+			
+			jscope.bind(ssDetails,_data,'cost');
+		});
+	};
+
+	var purchaseNum = function(result){    // 代缴情况
+		// console.log("配置picker的数据",optionsJson);
+		var picker = new $.DtPicker(optionsJson);
+		picker.show(function(rs){
+			result.innerText = rs.text;
+			picker.dispose();
+			countNum(detailData.count);
+		});
+	};
+	
+	var countNum = function(num){
+		if( pFeeType === 1 ){          // 代缴时，按年算	
+			var diffenYear = parseInt(num),
+				diffenMonth = (parseInt(startTime.innerText.substring(5)) - 1) < 10 ? '0' + (parseInt(startTime.innerText.substring(5))-1) : (parseInt(startTime.innerText.substring(5))-1).toString();
+			if( diffenMonth == "00" ){
+				diffenYear = diffenYear - 1;
+				diffenMonth = "12";
+			}
+			_data.timeStart = startTime.innerText;
+			_data.timeEnd = (parseInt(startTime.innerText.substring(0,4)) + diffenYear) + '-' + diffenMonth;
+			doc.getElementById("buyNum").innerText = num + "年";
+		}else if( pFeeType === 2 ){    // 代缴时，按月算	
+			if( parseInt(num) >= 12 ){
+				var diffenYear = parseInt(num / 12),
+					diffenMonth = parseInt(num) - diffenYear*12 - 1;
+			}else if( parseInt(num) < 12 ){
+				var diffenYear = 0,
+					diffenMonth = parseInt(num) - 1;
+			}
+			var _endMonth = parseInt(startTime.innerText.substring(5)) + diffenMonth < 10 ? '0' + (parseInt(startTime.innerText.substring(5)) + diffenMonth).toString() : (parseInt(startTime.innerText.substring(5)) + diffenMonth).toString();
+			if( parseInt(_endMonth) > 12 ){
+				diffenYear = diffenYear + 1;
+				_endMonth = (parseInt(_endMonth) - 12) < 10 ? '0' + (parseInt(_endMonth) - 12) : (parseInt(_endMonth) - 12).toString();
+			}else if( parseInt(_endMonth) === 12 ){
+				diffenYear = diffenYear;
+				_endMonth = 12;
+			}
+			if( _endMonth == "00" ){
+				diffenYear = diffenYear - 1;
+				_endMonth = "12";
+			}
+			_data.timeStart = startTime.innerText;
+			_data.timeEnd = (parseInt(startTime.innerText.substring(0,4)) + diffenYear) + '-' + _endMonth;
+			doc.getElementById("buyNum").innerText = num + "个月";
+		}
+		
+		_data.ssUnit = num;
+		detailData.count =  _data.ssUnit;
+
+		var ptAmount = pAmount * _data.ssUnit;
+		var ptServiceFee = pServiceFee * _data.ssUnit;
+		doc.getElementById("totalPrice").innerText = ptAmount + ptServiceFee;
+		_data.pAmount = _data.ssUnit + ' × ' + pAmount+'元';
+		_data.pServiceFee =  _data.ssUnit + ' × ' + pServiceFee+'元';
+		jscope.bind(ssDetails,_data,'cost');
+	};
+	
+	var closePage = function(){
+		var payment = plus.webview.getWebviewById("payment"),
+			process = plus.webview.getWebviewById("process"),
+			transact = plus.webview.getWebviewById("transact");
+		if(payment) payment.close();
+		if(process) process.close();
+		if(transact) transact.close();
+		// console.log(payment,process,transact);
+	};
+
+	var changePrice = function(ssUnit){
+		var ptAmount = pAmount * ssUnit;
+		var ptServiceFee = pServiceFee * ssUnit;
+		doc.getElementById("totalPrice").innerText = ptAmount + ptServiceFee;
+		_data.pAmount = ssUnit + ' × ' + pAmount+'元';
+		_data.pServiceFee =  ssUnit + ' × ' + pServiceFee+'元';
+	}
 	
 	if( pAmount == "null" || pAmount == "0" ){
 		pAmount = 0;
@@ -62,121 +180,6 @@
 			pName = self.pName;
 		_data.ssUnit = 1;
 		detailData.count = 	_data.ssUnit;	
-		
-		var selectTime = function(result){         // 补缴情况
-			// console.log("配置picker的数据",optionsJson);
-			var picker = new $.DtPicker(optionsJson);
-			picker.show(function(rs){
-				result.innerText = rs.text;
-				picker.dispose();
-				var selectStartTime = new Date(startTime.innerText).getTime();
-				var selectEndTime = new Date(endTime.innerText).getTime();
-				// console.log("按月算 所选择时间的时间戳，用于比较大小",selectStartTime,selectEndTime);
-				if( selectStartTime > selectEndTime ){
-					tips.style.visibility = "visible";
-					_data.ssUnit = 0;
-					detailData.count =  _data.ssUnit;
-					_data.timeStart = null;
-					_data.timeEnd = null;
-					// console.log("购买数量",detailData.count);
-				}else{
-					tips.style.visibility = "hidden";
-					var diffenYear = endTime.innerText.substring(0,4) - startTime.innerText.substring(0,4),
-						diffenMonth = endTime.innerText.substring(5) - startTime.innerText.substring(5);
-					if( diffenYear === 0 ){
-						var resultMonth = diffenMonth + 1;
-					}else{
-						var resultMonth = diffenYear * 12 + diffenMonth + 1;
-					}
-					// console.log(diffenYear,diffenMonth,resultMonth);
-					_data.ssUnit = resultMonth;
-					detailData.count =  _data.ssUnit;
-					_data.timeStart = startTime.innerText;
-					_data.timeEnd = endTime.innerText;
-					// console.log("购买数量",detailData.count);
-				}
-				
-				var ptAmount = pAmount * _data.ssUnit;
-				var ptServiceFee = pServiceFee * _data.ssUnit;
-				doc.getElementById("totalPrice").innerText = ptAmount + ptServiceFee;
-				_data.pAmount = _data.ssUnit + ' × ' + pAmount+'元';
-				_data.pServiceFee =  _data.ssUnit + ' × ' + pServiceFee+'元';
-				
-				jscope.bind(ssDetails,_data,'cost');
-			});
-		};
-		
-		var purchaseNum = function(result){    // 代缴情况
-			// console.log("配置picker的数据",optionsJson);
-			var picker = new $.DtPicker(optionsJson);
-			picker.show(function(rs){
-				result.innerText = rs.text;
-				picker.dispose();
-				countNum(detailData.count);
-			});
-		};
-		
-		var countNum = function(num){
-			if( pFeeType === 1 ){          // 代缴时，按年算	
-				var diffenYear = parseInt(num),
-					diffenMonth = (parseInt(startTime.innerText.substring(5)) - 1) < 10 ? '0' + (parseInt(startTime.innerText.substring(5))-1) : (parseInt(startTime.innerText.substring(5))-1).toString();
-				if( diffenMonth == "00" ){
-					diffenYear = diffenYear - 1;
-					diffenMonth = "12";
-				}
-				_data.timeStart = startTime.innerText;
-				_data.timeEnd = (parseInt(startTime.innerText.substring(0,4)) + diffenYear) + '-' + diffenMonth;
-				doc.getElementById("buyNum").innerText = num + "年";
-			}else if( pFeeType === 2 ){    // 代缴时，按月算	
-				if( parseInt(num) >= 12 ){
-					var diffenYear = parseInt(num / 12),
-						diffenMonth = parseInt(num) - diffenYear*12 - 1;
-				}else if( parseInt(num) < 12 ){
-					var diffenYear = 0,
-						diffenMonth = parseInt(num) - 1;
-				}
-				var _endMonth = parseInt(startTime.innerText.substring(5)) + diffenMonth < 10 ? '0' + (parseInt(startTime.innerText.substring(5)) + diffenMonth).toString() : (parseInt(startTime.innerText.substring(5)) + diffenMonth).toString();
-				if( parseInt(_endMonth) > 12 ){
-					diffenYear = diffenYear + 1;
-					_endMonth = (parseInt(_endMonth) - 12) < 10 ? '0' + (parseInt(_endMonth) - 12) : (parseInt(_endMonth) - 12).toString();
-				}else if( parseInt(_endMonth) === 12 ){
-					diffenYear = diffenYear;
-					_endMonth = 12;
-				}
-				if( _endMonth == "00" ){
-					diffenYear = diffenYear - 1;
-					_endMonth = "12";
-				}
-				_data.timeStart = startTime.innerText;
-				_data.timeEnd = (parseInt(startTime.innerText.substring(0,4)) + diffenYear) + '-' + _endMonth;
-				doc.getElementById("buyNum").innerText = num + "个月";
-			}
-			
-			_data.ssUnit = num;
-			detailData.count =  _data.ssUnit;
-			//_data.pAmount = pAmount * _data.ssUnit;
-			//_data.pServiceFee = pServiceFee * _data.ssUnit;
-
-			var ptAmount = pAmount * _data.ssUnit;
-			var ptServiceFee = pServiceFee * _data.ssUnit;
-			doc.getElementById("totalPrice").innerText = ptAmount + ptServiceFee;
-			_data.pAmount = _data.ssUnit + ' × ' + pAmount+'元';
-			_data.pServiceFee =  _data.ssUnit + ' × ' + pServiceFee+'元';
-			
-			// console.log("购买数量",detailData.count);
-			jscope.bind(ssDetails,_data,'cost');
-			
-		};
-		
-		var closePage = function(){
-			var payment = plus.webview.getWebviewById("payment"),
-				process = plus.webview.getWebviewById("process"),
-				transact = plus.webview.getWebviewById("transact");
-			if(payment) payment.close();
-			if(process) process.close();
-			if(transact) transact.close();
-			// console.log(payment,process,transact);
-		};
 			
 		if( serviceType == 0 ){              // 非周期性产品
 			var _year = new Date().getFullYear(),
@@ -192,18 +195,10 @@
 				"endTime": _year + '-' + _month
 			};
 			$.extend(_data,periodData);
-			// console.log("非周期性产品,根据流程页面传来参数，初次渲染页面_data",_data);
 			_data.timeStart = periodData.startTime;
 			_data.timeEnd = periodData.endTime;
-			//_data.pAmount = pAmount * _data.ssUnit;
-			//_data.pServiceFee = pServiceFee * _data.ssUnit;
-			
-			var ptAmount = pAmount * _data.ssUnit;
-			var ptServiceFee = pServiceFee * _data.ssUnit;
-			doc.getElementById("totalPrice").innerText = ptAmount + ptServiceFee;
-			_data.pAmount =  pAmount+'元';
-			_data.pServiceFee =  pServiceFee+'元';
-			
+
+			changePrice(_data.ssUnit);
 			jscope.bind(serviceTime,_data,'time');
 			jscope.bind(ssDetails,_data,'cost');
 			
@@ -238,16 +233,8 @@
 				_data.timeStart = periodData.startTime;
 				_data.timeEnd = periodData.endTime;
 				$.extend(_data,periodData);
-				//_data.pAmount = pAmount * _data.ssUnit;
-				//_data.pServiceFee = pServiceFee * _data.ssUnit;
 				
-				var ptAmount = pAmount * _data.ssUnit;
-				var ptServiceFee = pServiceFee * _data.ssUnit;
-				doc.getElementById("totalPrice").innerText = ptAmount + ptServiceFee;
-				_data.pAmount = _data.ssUnit + ' × ' + pAmount+'元';
-				_data.pServiceFee =  _data.ssUnit + ' × ' + pServiceFee+'元';
-				
-				// console.log("周期性产品,根据流程页面传来参数，初次渲染页面_data",_data);
+				changePrice(_data.ssUnit);
 				jscope.bind(serviceTime,_data,'time');
 				jscope.bind(ssDetails,_data,'cost');
 				
@@ -296,20 +283,11 @@
 				detailData.count =  _data.ssUnit;
 				_data.timeStart = periodData.startTime;
 				_data.timeEnd = periodData.endTime;
-				//_data.pAmount = pAmount * _data.ssUnit;
-				//_data.pServiceFee = pServiceFee * _data.ssUnit;
+				changePrice(_data.ssUnit);
 				
-				var ptAmount = pAmount * _data.ssUnit;
-				var ptServiceFee = pServiceFee * _data.ssUnit;
-				doc.getElementById("totalPrice").innerText = ptAmount + ptServiceFee;
-				_data.pAmount = _data.ssUnit + ' × ' + pAmount+'元';
-				_data.pServiceFee =  _data.ssUnit + ' × ' + pServiceFee+'元';
-				
-				// console.log("购买数量",detailData.count);
 				startTime.addEventListener('tap',selectTime.bind(startTime,startTime),false);
 				endTime.addEventListener('tap',selectTime.bind(endTime,endTime),false);
-								
-				// console.log("周期性产品,根据流程页面传来参数，初次渲染页面_data",_data);
+
 				jscope.bind(serviceTime,_data,'time');
 				jscope.bind(ssDetails,_data,'cost');
 			}
