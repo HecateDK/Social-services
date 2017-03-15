@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>advice-transact</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/mui.picker.min.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/advice.css" />
+</head>
+<body class="bg-white">
+	<header id="header" class="mui-bar mui-bar-nav">
+		<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+		<h1 class="mui-title">办理社保</h1>
+		<a class="location-a" id="location"></a>
+	</header>
+	<div class="mui-content">	
+		<div id="serviceTime" class="transact-time">
+			<ul class="mui-table-view mui-grid-view mui-grid-9 bg-white">
+				<li class="mui-media mui-col-xs-6 pseudo-right-border">
+					<p>开始月份</p>
+					<button id='startTime' data-options='' class="btn mui-btn mui-btn-block" jbind="time.startTime"></button>
+				</li>
+				<li id="finish" class="mui-media mui-col-xs-6">
+					<p>结束月份</p>
+					<button id='endTime' data-options='' class="btn mui-btn mui-btn-block" jbind="time.endTime"></button>
+				</li>
+				<li id="number" class="mui-media mui-col-xs-6">
+					<p>服务时间</p>
+					<button id="buyNum" data-options='' class="btn mui-btn mui-btn-block mui-navigate-right"></button>
+				</li>
+				<p id="tips" class="tips">所选时间不正确，请重新选择！</p>
+			</ul>
+		</div>
+		<div class="services-list">
+			<ul id="ssDetails" class="bg-white">
+				<li id="ssMonth" class="clearfix services-item">
+					服务周期
+					<a id="timeEnd" class="services-val"><span jbind="cost.timeEnd"></span></a>					
+					<a class="services-val color-normal">至</a>
+					<a id="timeStart" class="services-val"><span jbind="cost.timeStart"></span></a>
+				</li>
+				<li id="ssCost" class="clearfix services-item">
+					社保费用
+					<a class="services-val"><span jbind="cost.pAmount"></span></a>
+				</li>
+				<li class="clearfix services-item">
+					服务费用
+					<a class="services-val"><span jbind="cost.pServiceFee"></span></a>
+				</li>
+			</ul>
+		</div>
+		<div class="services-num">
+			<ul class="bg-white">
+				<li class="clearfix services-item">
+					总价格
+					<a class="services-val"><span id="totalPrice"></span>元</a>
+				</li>
+			</ul>
+		</div>
+		<div id="services-info" class="services-info joy-link clearfix">
+			个人信息
+			<!--<div>
+				<p class="extract-userInfo">
+					<span jbind="info.name">李敏怡</span>  
+					<span jbind="info.phoneNum">18813750863</span>   
+				</p>
+				<p class="extract-userInfo"><span jbind="info.bodyCode">445623578954251543</span></p>  
+				<i class="fa fa-exclamation-circle" aria-hidden="true">待完善</i>
+			</div>-->
+			<i class="fa fa-angle-right right" aria-hidden="true"></i>
+			<i id="info-notice" class="fa fa-exclamation-circle right" aria-hidden="true">待完善</i>		
+		</div>
+		<div class="services-order">
+			<p class="joy-link clearfix" jhref="advice-protocol.html">
+				<img src="../images/advice/comidentify.png"/>
+				查悦社保服务协议
+			</p>
+			<div id="submitOrder" type="button" class="mui-btn mui-btn-warning mui-btn-block">立即下单</div>
+		</div>
+	</div>
+	<script src="../js/lib/mui.min.js"></script>
+	<script src="../js/lib/q.min.js"></script>
+	<script src="../js/common.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/request.js"></script>
+    <script src="../js/services/shebaofuwu.js"></script>
+    <script src="../js/lib/mui.picker.min.js"></script>
+    <script src="../js/controller/advice-transact.js"></script>
+	<!--<script type="text/javascript">
+		(function ($,app,myStorage) {
+			$.init({swipeBack:true});
+			var startTime = document.getElementById("startTime");
+			var endTime = document.getElementById("endTime")
+			var selectTime = function(result){
+				var optionsJson = this.getAttribute('data-options') || '{}';
+				console.log("xxx",this,result);
+				var options = JSON.parse(optionsJson);
+				var picker = new $.DtPicker(options);
+				picker.show(function(rs){
+					result.innerText = rs.text;
+					picker.dispose();
+				});
+			};
+			/*startTime.addEventListener('tap',function(){
+				var optionsJson = this.getAttribute('data-options') || '{}';
+				var options = JSON.parse(optionsJson);
+				var id = this.getAttribute('id');
+				var picker = new $.DtPicker(options);
+				picker.show(function(rs){
+					document.getElementById("result-startTime").innerText = '选择结果：' + rs.text;
+					picker.dispose();
+				});
+			},false);*/
+			startTime.addEventListener('tap',selectTime.bind(startTime,startTime),false);
+			endTime.addEventListener('tap',selectTime.bind(endTime,endTime),false);
+			
+			var location = document.getElementById("location");
+			var setLocation = function(){
+				var city = app.getCity();
+				location.innerHTML = city.cityName;
+			};
+			location.addEventListener('tap',function(){
+				$.openWindow({ url:'pick-city.html',id:'pickCity',waiting:{autoShow:false} });
+			},false);
+			window.addEventListener("changeCity",function(event){
+				var city = event.detail;
+				location.innerHTML = city.cityName;
+				app.fireEvent('joy','refresh');
+			},false);
+			setLocation();
+			
+		})(mui,app,myStorage);
+	</script>-->
+</body>
+</html>

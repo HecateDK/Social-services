@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>advice-ssProcess</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/advice.css" />
+</head>
+<body>
+	<header id="header" class="mui-bar mui-bar-nav">
+		<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+		<h1 class="mui-title">社保服务</h1>
+	</header>
+	<div class="mui-content">	
+		<div class="mui-table-view-cell transactCity">
+			<a class="mui-navigate-right">
+				<span class="location-icon">
+					<i class="fa fa-map-marker"></i>
+					办理城市
+				</span>
+				<span class="location" id="location"></span>
+			</a>
+		</div>
+		<p id="processTips" class="process-tips"></p>
+		<div class="service-con">
+			<ul id="minNum" class="mui-table-view mui-grid-view mui-grid-9 bg-white">
+				<li id="miniAmount" class="mui-media mui-col-xs-6 mui-col-sm-3 pseudo-right-border clearfix">
+					<p class="minstandard">每月费用</p>
+					<p class="minstandard">最低<span jbind="min.pAmount"></span>元</p>
+				</li>
+				<li id="miniServiceFee" class="mui-media mui-col-xs-6 mui-col-sm-3 clearfix">
+					<p class="minstandard">服务费</p>
+					<p class="minstandard">最低<span jbind="min.pServiceFee"></span>元</p>
+				</li>
+			</ul>
+		</div>
+		<div class="tab-switch ss-switch">
+			<ul class="tab-items clearfix">
+				<li class="active">办理流程</li>
+				<li class="">购买须知</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-list">
+					<img src="../images/advice/process.jpg"/>
+				</div>
+				<div class="tab-list">
+					<img src="../images/advice/ssprocess.jpg"/>
+					<h4 class="note-title">社保：</h4>
+					<p>包含医疗保险，养老保险，生育险，失业险和工伤险</p>
+					<p>这5项福利可以帮助您获取更好的生活保障，包括外地人在北京买房，买车，积分落户和子女上学的资格问题，更多信息可以在APP中的查悦智能查看</p>
+					<p>电子版材料发送kefu@joyshebao.com</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="mui-bar mui-bar-tab bottom-btn">
+		<button id="kefuBtn" type="button" class="mui-btn mui-btn-primary mui-btn-outlined">在线客服</button>
+		<div id="handle" class="mui-btn mui-btn-primary joy-link">我要办理</div>
+	</nav>
+	<script src="../js/lib/mui.min.js"></script>
+	<script src="../js/lib/q.min.js"></script>
+	<script src="../js/common.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/request.js"></script>
+    <script src="../js/controller/judge-class.js"></script>
+    <script src="../js/services/shebaofuwu.js"></script>
+    <script src="../js/controller/advice-process.js"></script>
+</body>
+</html>

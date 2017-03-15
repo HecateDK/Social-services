@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <title>advice-detail</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/advice-detail.css" />
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav dbox">
+		<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+		<div class="dinfo">
+			<h1 id="dtitle" class="mui-title"></h1>
+			<div id="dtime" class="dtime mui-ellipsis"></div>
+		</div>
+	</header>
+	<div id="content" class="mui-content mui-scroll-wrapper" style="height: auto;">
+        <div class="mui-scroll">
+        	<ul id="ques" class="ques mui-clearfix"></ul>
+        </div>
+    </div>
+    <div class="mui-bar mui-bar-footer">
+    	<div class="bbox">
+	    	<div id="conBox" class="dcon">
+	    		<span id="hideInput" class="showInput active mui-icon fa fa-keyboard-o"></span>
+	    		<div id="conQues" class="qContent" contenteditable="true"></div>
+	    		<div id="conFuns" class="conFuns">
+	    			<span id="tips" class="tips">剩余250字</span>
+			    	<button id="sendQues" class="mui-btn">发送</button> 
+		    	</div>
+	    	</div>
+	    	<div id="funcBox" class="dfunc box">
+	    		<span id="showInput" class="showInput color-dark mui-icon fa fa-keyboard-o"></span>
+		    	<button id="closeQues" class="mui-btn">关闭咨询</button>
+	    	</div>
+	    	<div id="resBox" class="dres box">
+	    		<div class="score">
+	    			<span>服务评价:</span>
+	    			<span>
+		    			<span index="1" class="fa fa-star-o"></span>
+		    			<span index="2" class="fa fa-star-o"></span>
+		    			<span index="3" class="fa fa-star-o"></span>
+		    			<span index="4" class="fa fa-star-o"></span>
+		    			<span index="5" class="fa fa-star-o"></span> 
+	    			</span>
+	    		</div>
+	    		<button id="sendClose" class="mui-btn">关闭</button>
+	    		<button id="cancleClose" class="mui-btn">取消</button>
+	    		<div id="state" class="state" style="display: none;">已关闭</div>
+	    	</div>
+    	</div>
+    </div>
+	<script src="../js/lib/mui.min.js"></script>
+	<script type="text/javascript" src="../js/lib/q.min.js" ></script>
+	<script type="text/javascript" src="../js/common.js" ></script>
+	<script type="text/javascript" src="../js/storage.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="../js/request.js" ></script>
+	<script type="text/javascript" src="../js/services/joy-services.js"></script>
+	<script type="text/javascript" src="../js/controller/advice-detail.js"></script>
+</body>
+</html>

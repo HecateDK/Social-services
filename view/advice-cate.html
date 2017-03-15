@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>advice-cate</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/advice.css" />
+</head>
+<body>
+	<header id="header" class="mui-bar mui-bar-transparent cate-header">
+		<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+		<h1 class="mui-title">社保服务</h1>
+	</header>
+	<div class="mui-content adviceBox">	 
+		<img src="../images/advice/advice.png" style="width: 100%;">
+		<div class="service-con">
+			<h5 class="bh">代缴服务</h5>
+			<ul id="service" class="mui-table-view mui-grid-view mui-grid-9 bg-white">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 pseudo-right-border">
+					<a class="joy-link">
+			            <img src="../images/advice/socialSecurity.png"/>
+			            <div class="mui-media-body">社保服务</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 pseudo-right-border">
+					<a class="joy-link">
+			            <img src="../images/advice/providentFund.png"/>
+			            <div class="mui-media-body">公积金服务</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a class="joy-link">
+			            <img src="../images/advice/tax.png"/>
+			            <div class="mui-media-body">个税服务</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="cate">
+			<h5 class="bh">咨询服务</h5>
+			<ul id="advice-cate" class="advice-cate mui-table-view mui-grid-view mui-grid-9">
+			    <li class="cate mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-4">
+					<a class="joy-link1" jhref="advice-form.html?type=sbfw&nt=1">
+						<span class="cate-icon cate-icon-sb"></span>
+						<div class="mui-media-body">社保服务</div>
+					</a>
+				</li>
+				<li class="cate mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-4">
+					<a class="joy-link1" jhref="advice-form.html?type=gzjzz&nt=0">
+						<span class="cate-icon cate-icon-jzz"></span>
+						<div class="mui-media-body">工作居住证</div>
+					</a>
+				</li>
+				<li class="cate mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-4">
+					<a class="joy-link1" jhref="advice-form.html?type=gjjzx&nt=1">
+						<span class="cate-icon cate-icon-gjj"></span>
+						<div class="mui-media-body">公积金咨询</div>
+					</a>
+				</li>
+				<li class="cate mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-4">
+					<a class="joy-link1" jhref="advice-form.html?type=lxslh&nt=0">
+						<span class="cate-icon cate-icon-lxlh"></span>
+						<div class="mui-media-body">留学生落户</div>
+					</a>
+				</li>
+				<li class="cate mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-4">
+					<a class="joy-link1" jhref="advice-form.html?type=gszx&nt=1">
+						<span class="cate-icon cate-icon-fax"></span>
+						<div class="mui-media-body">个税咨询</div>
+					</a>
+				</li>
+				<li class="cate mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-4">
+					<a class="joy-link1" jhref="advice-form.html?type=jflh&nt=0">
+						<span class="cate-icon cate-icon-jflh"></span>
+						<div class="mui-media-body">积分落户</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="../js/lib/mui.min.js"></script>
+	<script src="../js/common.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+	<script type="text/javascript">
+		(function($){
+			$.init({swipeBack:true});
+			$('#advice-cate').on('tap','.cate a',function(){
+				if(!app.checkLogin()){
+					app.toLogin();
+				}else{
+					app.openWebview(this.getAttribute("jhref"));
+				}
+			});
+			
+			var links = document.querySelectorAll('#service .joy-link');
+			console.log(links);
+			/*$.each(links, function(i,link) {
+		        link.addEventListener('tap',function(){            	
+		        	var _url = link.getAttribute('jhref'); 
+		        	$.openWindow({
+		        		url: _url,
+		        		id: "payment"
+		        	});
+		        },false);
+			});*/
+			links[0].addEventListener('tap',function(){
+				$.openWindow({
+					url: 'advice-payment.html?pCategory=1',
+					id: "payment"
+				});
+			},false);
+			links[1].addEventListener('tap',function(){
+				$.openWindow({
+					url: 'advice_accuFund.html?pCategory=2',
+					id: "payment"
+				});
+			},false);
+			links[2].addEventListener('tap',function(){
+				$.openWindow({
+					url: 'advice_tax.html?pCategory=3',
+					id: "payment"
+				});
+			},false);
+		})(mui);
+	</script>
+</body>
+</html>

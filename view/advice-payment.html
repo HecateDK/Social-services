@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>advice-payment</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/advice.css" />
+</head>
+<body>
+	<header id="header" class="mui-bar mui-bar-nav">
+		<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+		<h1 class="mui-title">社保服务</h1>
+		<a class="location-a" id="location"></a>
+	</header>
+	<!--<div id="ssList" class="mui-content">	
+		<div jrepeat="ssList" item="item">
+			<div class="clearfix financeCorp joy-link" jattr="{jhref:item.jhrefUrl}">
+				<img class="compImg" jattr="{src:item.imgsrc}">
+				<div class="contentxt" jattr="{value:item.id}">
+					<p class="contxtTil" jbind="item.pName"></p>  
+					<p class="comInfo">
+						<span jbind="item.feeTypeName" id="price"></span>
+					</p>
+					<p jbind="item.servicesCompName" class="comcomp"></p>
+				</div>
+			</div>
+		</div>
+	</div>-->
+	
+	<div id="ssList" class="mui-content">	
+		<div class="payment-list" jrepeat="ssList" item="item">
+			<div class="clearfix financeCorp joy-link" jattr="{jhref:item.jhrefUrl}">
+				<img class="compImg" jattr="{src:item.imgsrc}">
+				<div class="contentxt" jattr="{value:item.id}">
+					<p class="contxtTil color-main" jbind="item.pName"></p>  
+					<p class="comInfo">
+						<span jbind="item.feeTypeName" id="price"></span>
+					</p>
+				</div>
+				<p class="dashed"></p>
+				<p class="comcomp" jbind="item.servicesCompName"></p>
+			</div>
+		</div>
+	</div>
+	<script src="../js/lib/mui.min.js"></script>
+	<script src="../js/lib/q.min.js"></script>
+	<script src="../js/common.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/request.js"></script>
+    <script src="../js/services/shebaofuwu.js"></script>
+    <script src="../js/controller/advice-payment.js"></script>
+	<!--<script type="text/javascript">
+		(function($,app,myStorage){
+			$.init({ swipeBack:true });
+			var location = document.getElementById("location");
+			var setLocation = function(){
+				var city = app.getCity();
+				console.log(city);
+				location.innerHTML = city.cityName;
+				return city.cityCode;
+				
+				console.log( Object.hasOwnProperty("cityCode") );
+			};
+			location.addEventListener('tap',function(){
+				$.openWindow({ url:'pick-city.html',id:'pickCity',waiting:{autoShow:false} });
+			},false);
+			window.addEventListener("changeCity",function(event){
+				var city = event.detail;
+				location.innerHTML = city.cityName;
+				app.fireEvent('joy','refresh');
+			},false);
+			setLocation();
+			
+			
+		})(mui,app,myStorage);
+		
+	</script>-->
+</body>
+</html>
