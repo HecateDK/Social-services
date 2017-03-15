@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">					
+		<title>全部贷款</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" href="../css/mui.min.css" />
+	    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/checkLater.css" />
+	</head>
+	<body style="overflow: hidden;">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+			<h1 class="mui-title">全部贷款</h1>
+		</header>
+		<div class="mui-content">
+			<div class="tips">
+				填写真实信息，有利于提高审核通过率
+			</div>	
+			<div class="echartsBox">
+				<div id="ECharts"></div>
+			</div>
+			
+			<div class="clearfix addInfor">
+				<img src="../images/loan/socialSecurity .png">
+				<span class="addExp">社保账户</span>
+				<i class="icons-plusSign"></i>				
+			</div>
+			<div class="clearfix addInfor">
+				<img src="../images/loan/accumulationFund.png">
+				<span class="addExp">公积金账户</span>
+				<i class="icons-plusSign"></i>				
+			</div>
+					
+		</div>
+		<script src="http://api.map.baidu.com/api?v=2.0&ak=hHe9D5WvTXS14U5cMKoS0Gi2MbaqfVg6"></script>
+		<script src="../js/geolocation.js"></script>
+		<script src="../js/lib/mui.min.js"></script>
+		<script src="../js/lib/Q.js"></script>
+		<script src="../js/common.js"></script> 
+		<script src="../js/storage.js"></script>
+		<script src="../js/app.js"></script>
+		<script src="../js/request.js"></script>
+		<script src="../js/services/userServices.js"></script>
+ 		<script src="../js/controller/main.js"></script>
+ 		<script src="../js/update.js"></script>
+ 		<script src="../js/lib/echarts.min.js"></script>
+ 		<script type="text/javascript">
+ 			var data = { "work":15,"informa":15,"accumFun":27,"socialSec":43 };
+ 			
+ 			// 初始化echarts实例
+ 			var loanChart = document.getElementById("ECharts");
+ 			// 指定图表的配置项和数据
+ 			var createChart = function(data){
+ 				console.log(data);
+ 				var chart = echarts.init(loanChart);
+ 				var dataStyle = {
+				    normal: {
+				        label: {
+				            show: false
+				        },
+				        labelLine: {
+				            show: false
+				        },
+				        borderWidth: 10,
+				        borderColor: '#ffffff',	       
+				    }
+				};
+ 				var option = {
+				    title : { },
+				    tooltip : { },
+				    backgroundColor: '#ffffff',
+				    color: ['#15A390', '#80C620','#FEE12C','#FDB125'],
+				    legend: { },
+				    animation: false,
+				    series : [
+				        {
+				            name: '访问来源',
+				            type: 'pie',
+				            radius : '55%',
+				            center: ['50%', '60%'],
+				            data: [{
+					            value: data.work,
+					            name:  '工作' + data.work +'%' 
+					        }, {
+					            value: data.informa,
+					            name:  '个人信息' + data.informa + '%'
+					        },{
+					        	value: data.accumFun,
+					        	name: '公积金' + data.accumFun + '%'
+					        },{
+					        	value: data.socialSec,
+					        	name: '社保' + data.socialSec + '%'
+					        }],
+					        label: {
+					            normal: {
+					                textStyle: {
+					                    fontSize: 12,
+					                    color: '#664B3C'
+					                }
+					            }
+					        },
+					        labelLine: {
+					            normal: {
+					                lineStyle: {
+					                    color: '#664B3C'
+					                }
+					            }
+					        },
+				            itemStyle: {
+				                emphasis: {
+				                    shadowBlur: 10,
+				                    shadowOffsetX: 0,
+				                    shadowColor: 'rgba(0, 0, 0, 0.5)'				                }
+				            }
+				        }
+				    ]
+				};
+ 				// 使用刚指定的配置项和数据显示图表
+ 				chart.setOption(option);
+ 			};
+ 			createChart(data);
+ 		</script>
+	</body>
+
+</html>

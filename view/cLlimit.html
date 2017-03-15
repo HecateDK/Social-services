@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">					
+		<title>借款额度</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" href="../css/mui.min.css" />
+	    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/checkLater.css" />
+		<style type="text/css">
+			/* 解决MUI部分样式冲突 */
+			body,.mui-content{ background: #fff; }
+			.mui-bar-nav{ box-shadow:0 1px 6px #01A29A;-webkit-box-shadow:0 1px 6px #01A29A; }
+			.mui-bar-nav{ -webkit-box-shadow: 0 0 1px #01A29A; box-shadow: 0 0 1px #01A29A;  }
+			.mui-popup{ width: 230px;border-radius: 5px; }
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+			<h1 class="mui-title">借款额度</h1>
+		</header>
+		<div class="mui-content">
+			<div class="range">
+				<h5 style="clear: left;">借款额度</h5>   
+		        <div class="mui-input-row mui-input-range inputRange">
+		            <input type="range" id='block-range' class="tip fill fill-replace" value="1200" min="0" max="24000" >
+		            
+		        </div>
+		        <p class="rangeVal">￥<span id='block-range-val'>1200</span></p>
+			</div>
+			<div class="mui-table-view-cell mui-media rating">
+				<ul>
+					<li><span class="ratingExp">信用等级:</span><span id="creatRating" class="ratingInfo">B</span></li>
+					<li><span class="ratingExp">日&nbsp;&nbsp;利&nbsp;&nbsp;率:</span><span id="creatRating" class="ratingInfo">0.05%/日</span></li>
+					<li><span class="ratingExp">系统服务费:</span><span id="creatRating" class="ratingInfo">0.03%/日</span></li>
+				</ul>
+			</div>
+			<div class="mui-table-view-cell mui-media periods">
+				<div class="periodsRange">
+					<div class="mui-input-row mui-input-range clearfix">		            
+			            <input type="range" id='inline-range' value="3" min="0" max="24" >
+			            <label class="periodsCho" ><icon class="periodsChoIcons"></icon><span id='inline-range-val'>3</span>个月</label>
+			        </div>
+				</div>
+				<div class="periodsTitle"><span class="periodsExp">还款期数：</span><span id="payPeriods" class="periodsInfo">3</span>个月</div>
+			</div>
+			<div class="mui-table-view-cell mui-media confirm">
+				<ul>
+					<li><span class="confirmExp">首次还款:</span><span id="creatRating" class="confirmInfo">2,200.00元（10月12日）</span></li>
+					<li><span class="confirmExp">还&nbsp;&nbsp;款&nbsp;&nbsp;日:</span><span id="creatRating" class="confirmInfo">每月25日</span></li>
+					<li><span class="confirmExp">还款明细:</span><a id="views" class="views">查看<i class="icons-search"></i></a></li>					
+				</ul>
+			</div>	
+			<div class="theNext">
+				<p class="prompt">
+					温馨提示： <br>
+					查悦金服支持提前还款，免违约金！
+				</p>
+				<p><a href="cLaddInfor.html"><img src="../images/loan/nextStep.png" alt="" /></a></p>
+			</div>							
+		</div>
+		
+		
+		<div id="detail" class="mui-popup mui-popover">
+			<div class="prompt_title">还款明细<i id="closeDet" class="icons-miss"></i></div>
+			<div class="particulars">
+				<ul>
+					<li><span class="particularsExp">每月应还本金</span><span id="repayDebt" class="particularsInfo">2,000.00</span></li>
+					<li><span class="particularsExp">借满6个月总利息</span><span id="interest" class="particularsInfo">1,500.00</span></li>
+		    		<li><span class="particularsExp"></span><span class="particularsInfo"></span></li>
+		    		<li><span class="particularsExp">2016年10月29日</span><span id="repayDebt1" class="particularsInfo">2,300</span></li>
+		    		<li><span class="particularsExp">2016年11月29日</span><span id="repayDebt2" class="particularsInfo">2,300</span></li>
+		    		<li><span class="particularsExp">2016年12月29日</span><span id="repayDebt3" class="particularsInfo">2,300</span></li>
+		    		<li><span class="particularsExp">2017年1月29日</span><span id="repayDebt4" class="particularsInfo">2,400</span></li>
+		    		<li><span class="particularsExp">2017年2月29日</span><span id="repayDebt5" class="particularsInfo">2,400</span></li>
+		    		<li><span class="particularsExp">2017年3月29日</span><span id="repayDebt6" class="particularsInfo">2,400</span></li>
+				</ul>
+			</div>
+		</div>
+		<div id="notice" class="mui-popup mui-popover">
+			<div class="prompt_title">借钱须知<i id="closeNot" class="icons-miss"></i></div>
+			<div class="particulars">
+				<div class="mui-media-body">
+					<p class="title color-yellow">计息方式</p>
+					<p class='noticeTips'>按实际借款天数计息</p>
+					<p class='noticeTips'>日利率0.05%，已还本金不计息</p>
+				</div>
+				<div class="mui-media-body">
+					<p class="title color-yellow">还款方式</p>
+					<p class='noticeTips'>等额本金，每月从借款银行卡扣除</p>
+				</div>
+				<div class="mui-media-body">
+					<p class="title color-yellow">提前还款</p>
+					<p class='noticeTips'>提前还款无需缴纳违约金</p>
+				</div>
+			</div>
+		</div>
+		
+		<script src="http://api.map.baidu.com/api?v=2.0&ak=hHe9D5WvTXS14U5cMKoS0Gi2MbaqfVg6"></script>
+		<script src="../js/geolocation.js"></script>
+		<script src="../js/lib/mui.min.js"></script>
+		<script src="../js/lib/Q.js"></script>
+		<script src="../js/common.js"></script> 
+		<script src="../js/storage.js"></script>
+		<script src="../js/app.js"></script>
+		<script src="../js/request.js"></script>
+		<script src="../js/services/userServices.js"></script>
+ 		<script src="../js/controller/main.js"></script>
+ 		<script src="../js/update.js"></script>
+ 		<script type="text/javascript">	
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			
+		    //监听input事件，获取range的value值，也可以直接element.value获取该range的值
+		  
+		    var blockRange = document.getElementById("block-range");
+		    var inlineRange = document.getElementById("inline-range");
+		    var blockVal = document.getElementById("block-range-val");
+		    var inlineVal = document.getElementById("inline-range-val");
+		    
+		    var payTime = document.getElementById("payPeriods");
+		    var p = 0;
+		    
+		    blockRange.addEventListener('input',function(){
+		    	blockVal.innerHTML = this.value;
+		    	p = this.value /24000 * 100;
+		    	bg(p,1);
+		    },false);
+		    
+		    inlineRange.addEventListener('input',function(){
+		    	inlineVal.innerHTML = this.value;
+		    	payTime.innerHTML = this.value;
+		    	p = this.value /24 * 100;
+		    	bg(p,0);
+		    },false);
+		    
+		    
+		    function bg(n,flag){
+		      	/*rangeList.css({
+		        	'background-image':'-webkit-linear-gradient(left ,#f22 0%,#f22 '+n+'%,#fff '+n+'%, #fff 100%)'
+		      	});*/
+		      	if(flag){
+					blockRange.style.backgroundImage = '-webkit-linear-gradient(left ,#fff 0%,#fff '+n+'%,#0C786C  '+n+'%, #0C786C  100%)';		      		
+		      	} else {
+		      		inlineRange.style.backgroundImage = '-webkit-linear-gradient(left ,#fff 0%,#fff '+n+'%,#A96413  '+n+'%, #A96413  100%)';
+		      	}
+		  	}
+		    
+			document.getElementById("views").addEventListener('tap', function() {
+				mui("#detail").popover('show');
+			});
+			document.getElementById("closeDet").addEventListener('tap', function() {
+				mui("#detail").popover('hide');
+			});	    	    
+ 		</script>
+	</body>
+
+</html>

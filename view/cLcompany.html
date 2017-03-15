@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">					
+		<title>查悦安心贷</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" href="../css/mui.min.css" />
+	    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/checkLater.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+			<h1 class="mui-title">查悦安心贷</h1>
+		</header>
+		<div class="mui-content">
+			<div class="borrwDetails">
+				<div class="comInfor">
+					<img src="../images/loan/companylogo.png">
+					<div class="contentxt">
+						<p class="contxtTil">积木盒子-读秒现金贷</p>  
+						<p><span class="mui-btn mui-btn-warning minBtn">无抵押</span><span class="mui-btn mui-btn-warning minBtn">当日放贷</span></p>
+					</div>
+				</div>
+				<div class="clearfix amountLoan">
+					<div class="mui-input-row opt mgright">
+						<label>金额</label>
+						<div class="clearfix"><input type="text" placeholder="8.0"><label>万</label></div>
+					</div>
+					<div class="mui-input-row opt">
+						<label>期限</label>
+						<div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+							<button class="fa-caret-up fa mui-btn-numbox-minus optminus" aria-hidden="true" type="button"></button>
+							<button class="fa fa-caret-down mui-btn-numbox-plus optplus" aria-hidden="true" type="button"></button>
+							<input id="test" class="mui-input-numbox" type="number" value="5" />
+							<button class="mui-btn-numbox-plus optmouth" type="button">月</button>
+						</div>
+					</div>
+				</div>
+				 <!--图表部分-->
+				 <div class="loanEcharts">
+				 	<div id="ECharts"></div>
+				 	<a id="views" class="views">查看详情&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+				 	<div class="loanTips">
+				 		<img src="../images/loan/note.png"/>
+				 		<span>计算结果仅为试算，实际收费率结果以最终审核结果为准</span>
+				 	</div>
+				 </div>	       
+			</div>	
+			<div class="mui-card comCard">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">申请条件</a>
+						<div class="mui-collapse-content">
+							<h1>h1. Heading</h1>
+							<h2>h2. Heading</h2>
+							<h3>h3. Heading</h3>
+							<h4>h4. Heading</h4>
+							<h5>h5. Heading</h5>
+							<h6>h6. Heading</h6>
+							<p>
+								p. 目前最接近原生App效果的框架。
+							</p>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">申请流程</a>
+						<div class="mui-collapse-content">
+							<h1>h1. Heading</h1>
+							<h2>h2. Heading</h2>
+							<h3>h3. Heading</h3>
+							<h4>h4. Heading</h4>
+							<h5>h5. Heading</h5>
+							<h6>h6. Heading</h6>
+							<p>
+								p. 目前最接近原生App效果的框架。
+							</p>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">申请流程</a>
+						<div class="mui-collapse-content">
+							<h1>h1. Heading</h1>
+							<h2>h2. Heading</h2>
+							<h3>h3. Heading</h3>
+							<h4>h4. Heading</h4>
+							<h5>h5. Heading</h5>
+							<h6>h6. Heading</h6>
+							<p>
+								p. 目前最接近原生App效果的框架。
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab comNav">
+			<button type="button" class="mui-btn mui-btn-success mui-btn-block">立即申请</button>
+		</nav>
+		
+		<script src="http://api.map.baidu.com/api?v=2.0&ak=hHe9D5WvTXS14U5cMKoS0Gi2MbaqfVg6"></script>
+		<script src="../js/geolocation.js"></script>
+		<script src="../js/lib/mui.min.js"></script>
+		<script src="../js/lib/Q.js"></script>
+		<script src="../js/common.js"></script> 
+		<script src="../js/storage.js"></script>
+		<script src="../js/app.js"></script>
+		<script src="../js/request.js"></script>
+		<script src="../js/services/userServices.js"></script>
+ 		<script src="../js/controller/main.js"></script>
+ 		<script src="../js/update.js"></script>	
+ 		<script src="../js/lib/echarts.min.js"></script>
+ 		<script type="text/javascript">
+ 			var data = { "total":80000.00,"month":12,"per":6936.16,"unit":8 };
+ 			
+ 			// 初始化echarts实例
+ 			var loanChart = document.getElementById("ECharts");
+ 			// 指定图表的配置项和数据
+ 			var createChart = function(data){
+ 				console.log(data);
+ 				var chart = echarts.init(loanChart);
+ 				var dataStyle = {
+				    normal: {
+				        label: {
+				            show: false
+				        },
+				        labelLine: {
+				            show: false
+				        },
+				        borderWidth: 10,
+				        borderColor: '#ffffff',	       
+				    }
+				};
+ 				var option = {
+ 					backgroundColor: '#ffffff',
+				    color: ['#FDB225', '#16A59C'],
+				    tooltip: { },
+				    legend: {     // 饼图外的各项数据item
+				        orient: 'vertical',
+				        left: '60%',
+				        top: '30%',
+				        itemWidth: 8,
+				        itemHeight: 8,
+				        data: ['贷款' + data.unit +'万/' + data.month + '个月','月供' + data.per + '元'],
+				    },
+				    series: [{    // 饼图的属性配置
+				        name: '查悦安心贷',
+				        type: 'pie',
+				        center: ['30%','50%'],
+				        radius: ['50%', '70%'],
+				        avoidLabelOverlap: false,
+				        startAngle:20,
+				        itemStyle: dataStyle,    // 图形样式
+				        label: {
+				            normal: {
+				                show: false,
+				                position: 'center'
+				            },
+				            emphasis: {
+				                show: true,
+				                formatter: function(param) {
+				                	return param.name;
+				                },
+				                textStyle: {
+				                    fontSize: '16',
+				                    fontWeight: 'bold'
+				                }
+				            }
+				        },
+				        labelLine: {
+				            normal: {
+				                show: true
+				            }
+				        },
+				        data: [{
+				            value: data.total,
+				            name:  '贷款' + data.unit +'万/' + data.month + '个月'
+				        }, {
+				            value: data.per,
+				            name:  '月供' + data.per + '元'
+				        }]
+				    }]
+ 				};
+ 				// 使用刚指定的配置项和数据显示图表
+ 				chart.setOption(option);
+ 			};
+ 			createChart(data);
+ 		</script>
+	</body>
+
+</html>

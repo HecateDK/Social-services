@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">					
+		<title>悦月花呗</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" href="../css/mui.min.css" />
+	    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/checkLater.css" />
+		<style type="text/css">
+			/* 解决MUI部分样式冲突 */
+			body,.mui-content{ background: #fff; }
+			.mui-bar-nav{ box-shadow:0 1px 6px #01A29A;-webkit-box-shadow:0 1px 6px #01A29A; }
+			.mui-bar-nav{     -webkit-box-shadow: 0 0 1px #01A29A; box-shadow: 0 0 1px #01A29A;  }
+			.previous{ color: #fff;padding: 10px 0 0 10px; }
+		</style>
+	</head>
+	<body>	
+		<div class="mui-content">
+			<div class="creditLine">
+				<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left previous"></a>
+				<p class="slogan">
+					<i class="icons-minus"></i>
+					<span>因为信任&nbsp;&nbsp;&nbsp;&nbsp;所以简单</span>
+					<i class="icons-minus"></i>
+				</p>
+				<div class="creditRating">
+					<canvas class="arcBar" id="rating" width="300" height="260"></canvas>
+					<div class="creditScore">
+						<p><span class="grade">A</span><span class="status">信用优良</span></p>
+						<p><span class="value">700</span>分</p>
+						<p><img src="../images/loan/arrow.png"/></p>
+					</div>
+				</div>
+				<p class="loanMoney">￥<span id="loanMoneymin">24,000</span>-<span id="loanMoneymax">100,000</span></p>
+				<p class="loanExp">悦月可贷金额</p>
+			</div>
+			<div class="clearfix tabControl">
+				<a href="cLloan.html" class="leftTab">
+					<img src="../images/loan/details.png"/>
+					<span class="tabExp">信用解读</span>
+				</a>
+				<a href="cLlimit.html" class="rightTab">
+					<img src="../images/loan/borrow.png"/> 
+					<span class="tabExp">快来借吧</span>
+				</a>			
+			</div>
+
+			
+		</div>
+		<script src="http://api.map.baidu.com/api?v=2.0&ak=hHe9D5WvTXS14U5cMKoS0Gi2MbaqfVg6"></script>
+		<script src="../js/geolocation.js"></script>
+		<script src="../js/lib/mui.min.js"></script>
+		<script src="../js/lib/Q.js"></script>
+		<script src="../js/common.js"></script> 
+		<script src="../js/storage.js"></script>
+		<script src="../js/app.js"></script>
+		<script src="../js/request.js"></script>
+		<script src="../js/services/userServices.js"></script>
+ 		<script src="../js/controller/main.js"></script>
+ 		<script src="../js/update.js"></script>
+ 		<script src="../js/controller/arc-bar.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

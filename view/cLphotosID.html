@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">					
+		<title>身份证照片</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" href="../css/mui.min.css" />
+	    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/checkLater.css" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon icon-mui mui-icon-left-nav mui-action-back mui-pull-left"></a>
+			<h1 class="mui-title">身份证照片</h1>
+		</header>
+		<div class="mui-content">
+			<div class="phoTitle">
+				身份证照片
+			</div>
+			<ul class="mui-table-view photosList">
+				<li class="mui-table-view-cell mui-media">
+					<a id="front" href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="../images/loan/front.jpg">
+						<div class="mui-media-body">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+							<span>身份证正面照</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a id="contrary" href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="../images/loan/contrary-.jpg">
+						<div class="mui-media-body">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+							<span>身份证反面照</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a id="handheld" href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="../images/loan/handheld.jpg">
+						<div class="mui-media-body">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+							<span>手持身份证正面照</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<nav class="mui-bar mui-bar-tab comNav">
+			<button type="button" class="mui-btn mui-btn-success mui-btn-block">提交</button>
+		</nav>
+		
+		<!--弹出框-->
+		<div id="frontPop" class="mui-popup mui-popover">
+			<div class="popInfo">
+				<p class="popTitle">身份证正面照</p>
+				<p class="popExp">1.原件拍照，清晰无处理，无水印，无PS，无扫描</p>
+				<p class="popExp">2.身份证四个角全部露出来，文字和数字均需清晰无处理、无遮盖。</p>
+				<img id="frontImg" src="../images/loan/frontExam.jpg"/>
+				<p class="popTips">请确保照片符合要求，否则无法通过审核！</p>
+				<button id="photograph" type="button" class="mui-btn mui-btn-primary">拍照</button>
+				<button id="uploading" type="button" class="mui-btn mui-btn-primary mui-btn-outlined">上传照片</button>
+			</div>
+		</div>
+		<div id="contraryPop" class="mui-popup mui-popover">
+			<div class="popInfo">
+				<p class="popTitle">身份证反面照</p>
+				<p class="popExp">1.原件拍照，清晰无处理，无水印，无PS，无扫描</p>
+				<p class="popExp">2.身份证四个角全部露出来，文字和数字均需清晰无处理、无遮盖。</p>
+				<img id="contraryImg" src="../images/loan/frontExam.jpg"/>
+				<p class="popTips">请确保照片符合要求，否则无法通过审核！</p>
+				<button id="conphotograph" type="button" class="mui-btn mui-btn-primary">拍照</button>
+				<button id="conuploading" type="button" class="mui-btn mui-btn-primary mui-btn-outlined">上传照片</button>
+			</div>
+		</div>
+		<div id="handheldPop" class="mui-popup mui-popover">
+			<div class="popInfo">
+				<p class="popTitle">手持身份证正面照</p>
+				<p class="popExp">1.原件拍照，清晰无处理，无水印，无PS，无扫描</p>
+				<p class="popExp">2.身份证四个角全部露出来，文字和数字均需清晰无处理、无遮盖。</p>
+				<img id="handheldImg" src="../images/loan/handExam.jpg"/>
+				<p class="popTips">请确保照片符合要求，否则无法通过审核！</p>
+				<button id="hanphotograph" type="button" class="mui-btn mui-btn-primary">拍照</button>
+				<button id="hanuploading" type="button" class="mui-btn mui-btn-primary mui-btn-outlined">上传照片</button>
+			</div>
+		</div>
+		
+		<script src="../js/lib/mui.min.js"></script>
+		<script src="../js/lib/Q.js"></script>
+		<script src="../js/common.js"></script> 
+		<script src="../js/storage.js"></script>
+		<script src="../js/app.js"></script>
+		<script src="../js/request.js"></script>
+		<script src="../js/services/photos.js"></script>
+ 		<script src="../js/controller/main.js"></script>
+ 		<script src="../js/update.js"></script>
+ 		<script type="text/javascript">
+ 			/*var front = document.getElementById("front"),
+ 				contrary = document.getElementById("contrary"),
+ 				handheld = document.getElementById("handheld"),
+ 				frontPop = document.getElementById("frontPop");
+ 			function pop(box){
+ 				mui(box).popover('show');
+ 			};
+ 			front.addEventListener('tap',pop(frontPop));*/
+			
+			var front = document.getElementById("front"),
+ 				contrary = document.getElementById("contrary"),
+ 				handheld = document.getElementById("handheld");
+ 			front.addEventListener('tap', function() {
+				mui("#frontPop").popover('show');
+			});
+			contrary.addEventListener('tap', function() {
+				mui("#contraryPop").popover('show');
+			});
+			handheld.addEventListener('tap', function() {
+				mui("#handheldPop").popover('show');
+			});
+ 		</script>
+ 		<script src="../js/controller/test.js" type="text/javascript"></script>
+	</body>
+
+</html>

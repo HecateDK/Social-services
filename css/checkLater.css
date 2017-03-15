@@ -1,0 +1,218 @@
+/* checkLater START */
+.creditLine{ background: #01A29A;padding-bottom: 15px; }
+.slogan,.loanExp,.loanMoney{ text-align: center;color: #fff;margin-bottom: 0; }
+.slogan{ padding: 36px 0; }
+.icons-minus{ display: inline-block; position: relative;box-sizing: border-box; vertical-align: middle; text-align: left; direction: ltr; text-indent: -99999px;width: 30px;height: 16px; }
+.icons-minus:before,.icons-minus:after{ content: '';pointer-events: none;position: absolute;left: 50%;top: 50%;width:30px;height:0.5px;transform: translate(-50%,-50%);box-shadow: inset 0 0 0 10px; }
+.loanMoney{ font-size: 20px;line-height: 22px; }
+
+.tabControl{ padding: 25px 55px; }
+.leftTab,.rightTab{ display: inline; }
+.leftTab{ float: left;left: 50%; }
+.rightTab{ float: right;right: 50%; }
+.leftTab img,.rightTab img{ width: 100px;}
+.tabExp{ color: #000000; display: block;text-align: center; }
+.creditRating{ position: relative; }
+.arcBar{ display: block;margin: 0 auto; }
+.creditScore{ width: 165px;height: 190px;margin:0 auto;margin-top: -190px;background-color: transparent; }
+.creditScore p{ color: #fff;font-size: 16px;line-height:40px;text-align: center; }
+.creditScore p img{ width: 25px;margin-top: 10px; }
+.creditScore p .grade{ margin-right: 5px; }
+.creditScore p .value{ font-size: 54px; }
+/* checkLater END */
+
+/* cLverification START */
+.validated,.details,.ensure{ background: #fff;margin-top: 16px;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd; }
+.validated img{ width: 56px;margin-right: 5px; }
+.validatedExp{ font-size: 12px; }
+.validatedTitle{ font-size: 18px;color: #f39900; }
+.details ul{ margin: 0;padding: 12px 0 12px 14px;}
+.details ul li{ list-style: none;font-size:14px;line-height: 26px; }
+.details ul li .detailsExp{ display: inline-block;width: 100px; }
+.details ul li .detailsInfo{ color: #f39900; }
+.ensure .ensureImg{ width: 100px;margin: 0 auto; }
+.ensure .ensureImg img{ width: 80px; }
+.ensure p{ color: #f39900; }
+/* cLverification END */
+
+/* cLlimit START */
+.range{ background: #01A29A;padding: 8% 6%;}
+.range h5{ color: #fff; margin: 0;}
+.range .inputRange input[type=range]{ height: 8px;background-color: #0C786C; } 
+.range .rangeVal{ color: #fff;text-align: center; }
+.mui-input-range .mui-tooltip{ display: none; }
+.rating,.periods,.confirm{ border-bottom: 1px solid #ddd;padding: 5% 6%;margin: 0; }
+.rating ul,.confirm ul,.particulars ul{ margin: 0;padding: 0; }
+.rating ul li,.confirm ul li,.particulars ul li{ list-style: none;line-height: 28px;font-size: 16px;color: #343434; }
+.rating ul li .ratingExp,.confirm ul li .confirmExp,.particulars ul li .particularsExp{ margin-right: 8px; }
+.rating ul li .ratingInfo,.confirm ul li .confirmInfo{ color:#15A49B ; }
+.periods .periodsRange{ background: #FD9021;width: 100%;padding: 0 0 0 4%;border-radius: 2%; }
+.periods .periodsRange .mui-input-row.mui-input-range{ padding-right: 0; }
+.periods .periodsRange input[type=range]{ width: 76%;background-color: #A96413;height: 8px; }
+.periods .periodsRange .periodsCho{ position:relative;float: right;background-color: #A96413;color:#fff;border-radius: 2%;width: 20%;padding: 12px 0 12px 5px; }
+.periods .periodsRange .periodsCho:before{ content: '';pointer-events: none;width: 0; position: absolute;height: 0;right: 90%; bottom: 28%; border-width: 10px 16px 10px 0; border-style: solid; border-right-color:#A96413;border-top-color: transparent; border-bottom-color: transparent; }
+.periods .periodsTitle{ margin-top: 10px;color: #15A49B; }
+.periods .periodsTitle .periodsExp{ color: #343434; }
+.confirm ul li .views{ color: #ff0000; text-decoration: underline;}
+.icons-search { position: relative;display:inline-block;width: 18px;height: 18px;border: 2px solid;border-radius: 50%;margin-left:4px;-webkit-transform: rotate(-45deg);-ms-transform: rotate(-45deg);transform: rotate(-45deg);}
+.icons-search:before { content:'';pointer-events:none;position: absolute; left: 50%; top: 14px;width: 3px; height: 10px; box-shadow: inset 0 0 0 2px; border-radius: 0 0 1px 1px; -webkit-transform: translateX(-50%);-ms-transform: translateX(-50%); transform: translateX(-50%);}
+.theNext{ padding: 5% 6%;margin: 0; }
+.theNext .prompt{ text-align: left;color: #FD9021; }
+.theNext p{ text-align: center; }
+.theNext p img{ width: 90px; }
+
+/* 弹出框 */
+.prompt_title{ cursor:move;font-size:14px;color: #fff;height: 35px;line-height: 35px;text-align:center;border-bottom: 1px solid #ececec;background-color:#01A29A; }
+.icons-miss { float: right;display: inline-block; position: relative;width: 15px;height: 24px;color: #fff; cursor: pointer; margin: 5px; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg);transform: rotate(45deg);}
+.icons-miss:before, .icons-miss:after { content:'';position: absolute;  left: 50%;top: 50%; -webkit-transform: translate(-50%,-50%); -ms-transform: translate(-50%,-50%);transform: translate(-50%,-50%);box-shadow: inset 0 0 0 15px;}
+.icons-miss:before {width: 15px; height: 2px;}
+.icons-miss:after {height: 15px; width: 2px;}
+.particulars{ padding: 19px 0 19px 20px;text-align: left;}
+.particulars ul li{ font-size: 14px;line-height: 24px; }
+.particulars ul li .particularsExp{ display:inline-block; width: 110px; }
+.particulars ul li .particularsInfo{ font-size:14px;color: #F59F31; }
+.particulars .mui-media-body{ margin-bottom: 10px; }
+.particulars .noticeTips{ font-size: 12px;line-height:16px;margin-bottom: 0; }
+.particulars .title{ margin-bottom: 0; }
+
+/* input滑块 */
+		input[type="range"]{
+			-webkit-appearance: none;
+		  	overflow:hidden;     /* 限定範圍 */
+		  	outline : none;      /* 避免點選會有藍線或虛線 */
+		  	background:none;
+		}
+		.range .inputRange input[type="range"]{
+		  background-image:-webkit-linear-gradient(left ,#fff 0%,#fff 8%,#0C786C 0%, #0C786C 100%);
+		}
+		input[type="range"]::-webkit-slider-thumb{
+		  -webkit-appearance: none;
+		  width:16px !important;
+		  height:16px !important;
+		  background:#D3D3D3 !important;
+		  border-radius:50% !important;
+		  transition:.2s !important;        /* 點選放大時候的漸變時間 */
+		}
+		.periodsRange div input[type="range"]{
+		  background-image:-webkit-linear-gradient(left ,#fff 0%,#fff 15%,#A96413 0%, #A96413 100%);
+		}
+		input[type="range"]::-webkit-slider-thumb:before,
+		input[type="range"]::-webkit-slider-thumb:after
+		{
+		  position: absolute;
+		  top: 3px;
+		  width: 2000px;          /* 長度很長沒關係，因為剛剛有用 overflow:hidden 了 */
+		  height: 4px;
+		  content:"";
+		  pointer-events: none;   /* 讓滑鼠可以點擊穿透偽元素，不然會點不到下面 */
+		  transition:.2s;
+		}
+		
+		input[type="range"]::-webkit-slider-thumb:before{
+		  left: -1997px;
+		  background: #fff !important;
+		}
+		input[type="range"]::-webkit-slider-thumb:after {
+		  left: 10px;
+		  background: #fff !important;
+		}
+		/*input[type="range"]:active::-webkit-slider-thumb:before,
+		input[type="range"]:active::-webkit-slider-thumb:after
+		{
+		  top: 6px;
+		}
+		
+		input[type="range"]:active::-webkit-slider-thumb{
+		  width:16px;
+		  height:16px;
+		}
+		
+		input[type="range"]:active::-webkit-slider-thumb:after {
+		  left: 16px;
+		}*/
+
+/* cLlimit END */
+
+/* cLaddInfor START */
+.tips{ font-size:12px;color: #8F8F8F; padding: 5px 0 5px 5px; }
+.loanList{ position: absolute;overflow: auto;bottom: 0;left: 0;right: 0;top: 70px; }
+.addInfor{ background: #fff; border-top: 1px solid #D3D3D3;border-bottom: 1px solid #D3D3D3;padding: 12px 12px;margin-bottom: 12px; }
+.addInfor img{ float:left;width: 13%;max-width: 60px;min-width: 20px;margin: 0 6px 0 0; }
+.addInfor .contentxt{ width: 60%;display: inline-block;margin-top: 2px; }
+.addInfor .contentxt p{ margin-bottom: 2px; }
+.addInfor .contentxt .contxtTil{ font-size: 16px;color: #333; }
+.icons-plusSign{ float:right;width: 25px;height: 50px;color:#FA9123; display: inline-block;position: relative;vertical-align: middle; }
+.icons-plusSign:before, .icons-plusSign:after{ content:'';cursor: pointer; position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);box-shadow: inset 0 0 0 5px; }
+.icons-plusSign:before{ width: 22px;height: 2.5px; }
+.icons-plusSign:after{ width: 2.5px;height: 22px; }
+.addInfor span{ color: #727272;font-size:15px; line-height: 50px; }
+.nextStep{  }
+.nextStep img{ width: 24%;left: 39%;position: fixed;bottom: 5%; }
+/* cLaddInfor END */
+
+
+/* cLcompany START */
+.mgright{ margin-right: 5%; }
+.borrwDetails{ background-color: #fff;padding: 4%; }
+.borrwDetails .comInfor{ padding: 2px 0 8px 0;border-bottom: 1px solid #ddd; }
+.borrwDetails .comInfor img{ width: 22%;max-width: 100px;min-width: 46px;margin-right: 3%; }
+.borrwDetails .comInfor .contentxt{ display: inline-block;width: 72%; }
+.borrwDetails .comInfor .contentxt .contxtTil{ font-size: 16px;color: #333333; }
+.borrwDetails .comInfor .contentxt .minBtn{ background-color:#FDB125;padding: 1px 6px;border-radius: 10%;margin-right: 5%; }
+.borrwDetails .amountLoan .opt{ display: inline-block;width: 46%;padding: 5% 0 0 0; }
+.borrwDetails .amountLoan .opt label{ padding: 0;line-height: 40px;width: 27%; }
+.borrwDetails .amountLoan .opt input{ border: none; }
+.borrwDetails .amountLoan .opt div{ border:1px solid #FDB125;display: inline-block;width: 72%;height:35px;border-radius: 5%;margin: 0; }
+.borrwDetails .amountLoan .opt div input{ width: 75%;height:33px;display: inline-block;border-right: 1px solid #FDB125;margin-bottom: 0;padding: 5px;text-align: center; }
+.borrwDetails .amountLoan .opt div label{ float: right;text-align: center;line-height: 35px;width: 25%; }
+.borrwDetails .amountLoan .opt div .optminus,.borrwDetails .amountLoan .opt div .optplus{ left: 0;height: 50%;width: 25%;color:#FDB125;background-color: #fff;font-size: 20px; }
+.borrwDetails .amountLoan .opt div .optminus{ top: 0; }
+.borrwDetails .amountLoan .opt div .optplus{ top: 50%; }
+.borrwDetails .amountLoan .opt div .optmouth{ width: 28%;background-color: #fff;border-left: 1px solid #FDB125; }
+.borrwDetails .amountLoan .opt .mui-numbox { background-color: #fff;padding: 0 20% 0 19%; }
+.borrwDetails .amountLoan .opt .mui-numbox input{ border-left: solid 1px #FDB125!important;border-right: none !important; }
+
+.loanEcharts{width:100%;background-color:#fff;height: 220px;position: relative;}
+.loanEcharts #ECharts{width:100%;background-color:#fff;height: 220px; }
+.loanEcharts .views{ position: absolute;left: 63%;top: 55%;color: #999;font-size: 14px; }
+.loanEcharts .loanTips{ position: absolute;bottom: -10px;width:100%;margin: 0 auto; }
+.loanEcharts .loanTips img{ width: 20px;float: left;margin-right: 5px; }
+.loanEcharts .loanTips span{ font-size: 12px;color: #797979; }
+.comCard { margin: 4% 0;background: #EFEFF4;box-shadow:  0 0; }
+.comCard .mui-table-view { background: #EFEFF4; }
+.comCard .mui-table-view .mui-collapse{ position: static;margin-bottom: 2%;background: #fff;border-top: 1px solid #D3D3D3;border-bottom: 1px solid #D3D3D3;border-radius: 0 !important; }
+.comCard ul li>a:not(.mui-btn) { border-bottom: 1px solid #ddd; }
+.comNav{ height:55px;padding: 1% 7%;background: #fff;border-top: 1px solid #ddd;box-shadow: 0 0; }
+.comNav button{background: #01A29A;border:1px solid #01A29A;margin:2% 0}
+/* cLcompany END */
+
+/* cLallLoan START */
+.financeCorp { position: relative; background: #fff;border-top: 1px solid #D3D3D3;border-bottom: 1px solid #D3D3D3;padding: 2%;margin-bottom: 2%; }
+.financeCorp .compImg{ float: left; width: 22%;margin:14% 0;max-width: 100px;min-width: 46px;margin-right: 2%; }
+.financeCorp .hot{ position: absolute;z-index: 10;width: 10%;max-width:60px;min-width: 30px; top: 0;right: 4%; }
+.financeCorp .contentxt{ padding-left: 2%; display: inline-block;width: 72%;z-index: 5;border-left: 1px solid #D3D3D3; }
+.financeCorp .contentxt .contxtTil{ font-size: 18px;line-height:20px;color: #333333;margin-bottom: 2px; }
+.financeCorp .contentxt .comInfo p{ display: inline-block;width: 30%;margin-right: 2%;color: #343434; }
+.financeCorp .contentxt .comInfo p .maxinum{ color: #FDB125; }
+.financeCorp .contentxt .comInfo p .InfoExp{ color: #909090; }
+.financeCorp .contentxt .minBtn{ font-size: 12px; background-color:#FDB125;padding: 1px 6px;border-radius: 10%;margin-right: 3%; }
+/* cLallLoan END */
+
+/* cLphotosID START */
+.phoTitle{ margin: 10px 0 15px 10px;color: #6D6D72;font-size: 14px; }
+.photosList li img{ width: 22%;height: auto !important;max-width: 100px !important; }
+.photosList li a .mui-media-body{ font-size:14px;position: absolute;left: 28%;height: 28%;line-height: 28%;top: 38%; }
+.photosList li a .mui-media-body .fa{ color: #F5A955; }
+.photosList .mui-table-view-cell:after{ right: 3%;left: 3%; }
+.popInfo{ padding: 5%; }
+.popInfo .popTitle{ font-size: 14px;color: #333333;text-align: center; }
+.popInfo .popExp{ font-size: 12px;line-height:normal;color: #F59F31;text-align: left;margin-bottom: 2px; }
+.popInfo img{ width: 100%;margin-top: 8px;max-height: 250px; }
+.popInfo .popTips{ font-size: 12px; }
+.popInfo button{ font-size:12px;width: 40%; }
+
+/* cLloan START */
+.echartsBox{ padding: 2% 1% 2% 1%;background: #fff; }
+.echartsBox #ECharts{ width: 100%;height: 260px; }
+
+
